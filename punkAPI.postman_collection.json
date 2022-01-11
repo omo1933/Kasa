@@ -1,0 +1,75 @@
+{
+	"info": {
+		"_postman_id": "71f862c3-85ca-4c36-af3b-37cb6f0c1b31",
+		"name": "punkAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Beer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json();\r",
+							"let expectedAmount=12.5+'grams'\r",
+							"let bitterMagnum= response[0].ingredients.hops[1].amount.value+'grams'\r",
+							"let flavourMagnum=response[0].ingredients.hops[2].amount.value+'grams'\r",
+							"\r",
+							"\r",
+							"//IBU content is a number\r",
+							"pm.test(\"IBU content is a number\", function () {\r",
+							"    pm.expect(response[0].ibu).to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"//Beer's description\r",
+							"pm.test(\"beer's description is not empty\", function () {\r",
+							"    pm.expect(response[0].description).not.to.eql(null);\r",
+							"});\r",
+							"\r",
+							"//Check if beer has exactly 12.5 grams of 'Magnum' hops\r",
+							"pm.test(\"bitter Magnum has an amount of 12.5 grams\", function () {\r",
+							"    pm.expect(bitterMagnum).to.eql(expectedAmount);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Flavour Magnum has an amount of 12.5 grams\", function () {\r",
+							"    pm.expect(flavourMagnum).to.eql(expectedAmount);\r",
+							"});\r",
+							"console.log(bitterMagnum)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.punkapi.com/v2/beers?yeast=Wyeast 3522 - Belgian Ardennes&hops=Tomahawk",
+					"protocol": "https",
+					"host": [
+						"api",
+						"punkapi",
+						"com"
+					],
+					"path": [
+						"v2",
+						"beers"
+					],
+					"query": [
+						{
+							"key": "yeast",
+							"value": "Wyeast 3522 - Belgian Ardennes"
+						},
+						{
+							"key": "hops",
+							"value": "Tomahawk"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
