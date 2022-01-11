@@ -1,0 +1,18 @@
+{
+  "name": "unchained-proofofcode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^9.2.1"
+  },
+  "dependencies": {
+    "@testing-library/cypress": "^8.0.2",
+    "cypress-fill-command": "^1.0.2"
+  }
+}
